@@ -1,13 +1,33 @@
-<h1>Hi How are you!</h1>
-    <video #video autoplay playsinline [ngStyle]="getStyles()"></video>
+    <div fxLayout="row wrap" fxLayoutAlign="center" >
+        <div fxFlex="0 1 auto" fxLayout="column" fxLayoutGap="10%" fxLayoutAlign="center">
+            <h1>Hi How are you!</h1>
+            <video #video autoplay playsinline [ngStyle]="getStyles()"></video>
+            <button (click)="takePicture()">Take Picture</button>
+            
+            <canvas  #canvas id="canvas" width="200" height="200" style="border:1px solid #d3d3d3;" ></canvas>
+        </div>
+        
+        <div fxFlex="100%">
+        <label><input type="checkbox" [checked]="blur" (change)="blur = !blur">blur</label>
+        <label><input type="checkbox" [checked]="sepia" (change)="sepia = !sepia">sepia</label>
+        <label><input type="checkbox" [checked]="invert" (change)="invert = !invert">invert</label>
+        <label><input type="checkbox" [checked]="flip" (change)="flip = !flip">flip</label>
+        </div>
+        <div fxFlex="100%">
+
+        <button mat-fab color="primary"
+          holdable
+          (holdHoldTime)="onHold($event)"
+          (holdStart)="recordAudio()" 
+          (holdStop)="stoprecord()">
+          {{ state === 'recording' ? seconds : 'REC' }}</button>
+        <!-- onStart--> 
+          <audio   #audio  autoplay controls>
+
+            <source src="{{myurl}}" type="audio/ogg"
+          </audio>
+        </div>
+
+
+    </div>
     
-    <img #picture >
-    <canvas #canvas id="canvas" width="200" height="200" style="border:1px solid #d3d3d3;" ></canvas>
-    <button (click)="takePicture()">Take Picture</button>
-    
-    <pre>{{labels | json}}</pre>
-    
-    <label><input type="checkbox" [checked]="blur" (change)="blur = !blur">blur</label>
-    <label><input type="checkbox" [checked]="sepia" (change)="sepia = !sepia">sepia</label>
-    <label><input type="checkbox" [checked]="invert" (change)="invert = !invert">invert</label>
-    <label><input type="checkbox" [checked]="flip" (change)="flip = !flip">flip</label>

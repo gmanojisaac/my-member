@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HoldableDirective} from './stepper-first/holdable.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppMaterialModule } from './app-material/app-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -17,7 +18,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
   declarations: [
     AppComponent,
     StepperDetailsComponent,
-    StepperFirstComponent
+    StepperFirstComponent,
+    HoldableDirective
   ],
   imports: [
     BrowserModule,
