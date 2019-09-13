@@ -27,6 +27,7 @@
     "firebase": "^6.6.0",
     "hammerjs": "^2.0.8",
     "peerjs": "^1.0.4",
+    "recordrtc": "^5.5.8",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

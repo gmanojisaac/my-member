@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AnimationBuilder, AnimationPlayer, AnimationMetadata } from '@angular/animations';
 import { STEPPER_GLOBAL_OPTIONS, StepperSelectionEvent, CdkStepper } from '@angular/cdk/stepper';;
-import { datesteps } from '../steps';
+import { steps } from '../steps';
 import { nextStepAnimation } from '../animations/animationsNext';
 
 @Component({
@@ -22,7 +22,7 @@ export class StepperDetailsComponent implements OnInit {
 
   public ngOnInit(): void {
 
-    this.steps = datesteps;
+    this.steps = steps;
   }
 
   public onSelChange(e: StepperSelectionEvent) {

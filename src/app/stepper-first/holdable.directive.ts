@@ -26,6 +26,7 @@ export class HoldableDirective {
 
   @HostListener('mousedown') 
   onHold() {
+    
     this.start.emit();
     const ms = 100;
 

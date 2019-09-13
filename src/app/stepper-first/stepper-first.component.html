@@ -1,33 +1,63 @@
-    <div fxLayout="row wrap" fxLayoutAlign="center" >
-        <div fxFlex="0 1 auto" fxLayout="column" fxLayoutGap="10%" fxLayoutAlign="center">
-            <h1>Hi How are you!</h1>
-            <video #video autoplay playsinline [ngStyle]="getStyles()"></video>
-            <button (click)="takePicture()">Take Picture</button>
-            
-            <canvas  #canvas id="canvas" width="200" height="200" style="border:1px solid #d3d3d3;" ></canvas>
-        </div>
-        
-        <div fxFlex="100%">
-        <label><input type="checkbox" [checked]="blur" (change)="blur = !blur">blur</label>
-        <label><input type="checkbox" [checked]="sepia" (change)="sepia = !sepia">sepia</label>
-        <label><input type="checkbox" [checked]="invert" (change)="invert = !invert">invert</label>
-        <label><input type="checkbox" [checked]="flip" (change)="flip = !flip">flip</label>
-        </div>
-        <div fxFlex="100%">
+<div fxLayout="column" fxLayoutAlign="center"  fxLayoutGap="10%">
 
-        <button mat-fab color="primary"
-          holdable
-          (holdHoldTime)="onHold($event)"
-          (holdStart)="recordAudio()" 
-          (holdStop)="stoprecord()">
-          {{ state === 'recording' ? seconds : 'REC' }}</button>
-        <!-- onStart--> 
-          <audio   #audio  autoplay controls>
-
-            <source src="{{myurl}}" type="audio/ogg"
-          </audio>
-        </div>
-
-
+    <div fxFlex="0 1 30vh"  fxLayoutGap="10%" fxLayoutAlign="center">
+        <mat-icon fxFlexAlign="center" > fast_rewind </mat-icon>
+            <mat-card style= "max-width: 20%;" >
+                <mat-card-header>
+                <mat-card-title>Dad</mat-card-title>
+                <mat-card-subtitle>Manoj</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="/assets/man.png" alt="Photo of Manoj">
+                <mat-card-content>
+                <p>
+                    Dad
+                </p>
+                </mat-card-content>
+            </mat-card>
+           
+        <mat-card style= "max-width: 20%;" >
+                <mat-card-header>
+                <mat-card-title>Mom</mat-card-title>
+                <mat-card-subtitle>Annie</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="/assets/women.png" alt="Photo of Annie">
+                <mat-card-content>
+                <p>
+                    Mommy
+                </p>
+                </mat-card-content>
+        </mat-card>
+        <mat-icon fxFlexAlign="center"> fast_forward </mat-icon>
     </div>
+    
+    <div fxFlex="0 1 30vh"  fxLayoutGap="10%" fxLayoutAlign="center">
+        <mat-card style= "max-width: 30%;" >
+        <mat-card-header>
+            <div mat-card-avatar style= "    background-image: url('/assets/girl.png'); background-size: contain;"></div>
+            <mat-card-title>Daughter</mat-card-title>
+            <mat-card-subtitle>Annie</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="/assets/girl.png" alt="Photo of Angelin">
+        <mat-card-content>
+            <p>
+                Angelin
+            </p>
+        </mat-card-content>
+        </mat-card>
+
+        <mat-card style= "max-width: 30%;" >
+            <mat-card-header>
+                <div mat-card-avatar style= "background-image: url('/assets/boy.png'); background-size: contain;"></div>
+                <mat-card-title>Brother</mat-card-title>
+                <mat-card-subtitle>Ashwin</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="/assets/boy.png" alt="Photo of Ashwin">
+            <mat-card-content>
+                <p>
+                    Brother
+                </p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
     

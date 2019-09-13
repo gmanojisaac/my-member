@@ -1,0 +1,9 @@
+.example-card {
+    max-width: 70%;
+    max-height: 70vh;
+  }
+  
+  .example-header-image {
+    background-image: url('/assets/man.png');
+    background-size: contain;
+  }

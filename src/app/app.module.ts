@@ -13,13 +13,27 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { FirstpageComponent } from './firstpage/firstpage.component';
+import { PhotopageComponent } from './photopage/photopage.component';
+import { GiftpageComponent } from './giftpage/giftpage.component';
+import { AuidoRecPlayComponent } from './auido-rec-play/auido-rec-play.component';
+import { VideoRecPlayComponent } from './video-rec-play/video-rec-play.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { SecondPageComponent } from './second-page/second-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StepperDetailsComponent,
     StepperFirstComponent,
-    HoldableDirective
+    HoldableDirective,
+    FirstpageComponent,
+    PhotopageComponent,
+    GiftpageComponent,
+    AuidoRecPlayComponent,
+    VideoRecPlayComponent,
+    LoginPageComponent,
+    SecondPageComponent
   ],
   imports: [
     BrowserModule,

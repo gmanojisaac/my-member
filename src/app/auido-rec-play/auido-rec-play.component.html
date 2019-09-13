@@ -1,0 +1,11 @@
+<button mat-fab color="primary"
+holdable
+(holdHoldTime)="onHold($event)"
+(holdStart)="initiateRecording()" 
+(holdStop)="stopRecording()">
+{{ state === 'recording' ? seconds : 'REC' }}</button> 
+
+
+<audio controls="" *ngIf="url">
+  <source [src]="sanitize(url)" type="audio/wav">
+</audio>

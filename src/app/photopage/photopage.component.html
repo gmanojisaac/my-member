@@ -1,0 +1,49 @@
+<div fxLayout="row"  fxLayoutGap="10%">
+  <div fxFlex="0 1 45vh" fxLayoutAlign="start center" >
+    <mat-card  >
+      <mat-card-header>
+        <div mat-card-avatar  style= "background-image: url('/assets/man.png'); background-size: contain;"></div>
+        <mat-card-title>Isaac's Family</mat-card-title>
+        <mat-card-subtitle>Trivandrum </mat-card-subtitle>
+        <mat-card-subtitle>ph:9539325410</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image style= "max-height: 50vh" src="https://firebasestorage.googleapis.com/v0/b/angularsocial-c52dd.appspot.com/o/filePath?alt=media&token=08f3cec2-1dcc-481b-8c47-4c6e0a96cfd9" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        <p>
+          A Loving Father
+        </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button >Anniversary</button>
+        <button mat-raised-button >Jan 28</button>
+        <button mat-raised-button >Birthday</button>
+        <button mat-raised-button >Nov 11</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div fxLayout="column" fxLayoutGap="18%">
+      <h1>
+        Update Details
+      </h1>
+      <button mat-raised-button color="primary">
+          Personal Details
+      </button>
+      <button mat-raised-button color="primary">
+          Picture
+        </button>
+
+        <button mat-raised-button color="primary">
+          Birth Date
+        </button>
+        <button mat-raised-button color="primary">
+          Anniversary
+        </button>
+        <button mat-raised-button color="primary">
+            voice Greeting
+        </button>
+        <button mat-raised-button color="primary" (click)="NextPage()">
+            My Gifts 
+        </button>
+  </div>
+  
+</div>  
