@@ -76,7 +76,7 @@ export class StepperFirstComponent implements OnInit {
             const date = new Date().valueOf();
             let text = '';
             const possibleText = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-            for (let i = 0; i < 5; i++) {
+            for (let i = 0; i < 10; i++) {
               text += possibleText.charAt(Math.floor(Math.random() * possibleText.length));
             }
             // Replace extension according to your media type like this 
@@ -85,7 +85,7 @@ export class StepperFirstComponent implements OnInit {
             //this.generatedImage =  window.URL.createObjectURL(imageFile);
             // window.open(this.generatedImage);
             console.log('imageFile', imageFile);
-            this.storage.upload('filePath_profile', imageFile);
+            this.storage.upload(`${text}`, imageFile);
               /*.then( uploadstat => {
                 if( uploadstat != null){
                   uploadstat.ref.getDownloadURL().then(downloadURL=>{
