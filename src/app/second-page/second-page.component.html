@@ -4,15 +4,17 @@
     <mat-toolbar color="primary">
       <mat-toolbar-row>
         <span>my-member.com</span>
+        <span fxFlex="auto" ></span>
+        <mat-icon> exit_to_app</mat-icon>
       </mat-toolbar-row>
     </mat-toolbar>
   </div>
   
   <div gdArea="side" [ngStyle]="{'margin-left.px': 25}" [ngStyle.lt-md]="{ 'margin-right.px': 25}">
-     <app-stepper-details></app-stepper-details>
+    <app-giftpage></app-giftpage>
   </div>
   <div gdArea="content" [ngStyle]="{'background-color':'cyan', 'margin-right.px': 25}"
     [ngStyle.lt-md]="{'background-color':'yellow', 'margin-left.px': 25}">
-    <app-giftpage></app-giftpage>
+    <app-stepper-details></app-stepper-details>
   </div>
 </div>

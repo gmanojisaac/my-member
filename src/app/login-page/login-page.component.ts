@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { MemberloadService, config, Task } from '../memberload.service';
 
 @Component({
   selector: 'app-login-page',
@@ -7,13 +8,28 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit {
-
-  constructor(private router: Router) { }
+  key: string = 'UID';
+  keyName: string= 'UserName';
+  keyEmail: string= 'UserEmail';
+  keyPhoto: string= 'UserPhoto';
+  showLogin: boolean;
+  showName: string;
+  constructor(private router: Router, private taskService: MemberloadService) { }
 
   ngOnInit() {
+
   }
+
   NextPage(){
-    this.router.navigate(['/next']);
+    this.taskService.googleSignin().then((someData) =>{
+      if(someData != null){
+        console.log("googlesignin",someData );
+        
+      }
+      this.router.navigate(['/next']);
+     
+    });
+    
   }
 
 }

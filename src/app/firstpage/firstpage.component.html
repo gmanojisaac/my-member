@@ -4,6 +4,8 @@
     <mat-toolbar color="primary">
       <mat-toolbar-row>
         <span>my-member.com</span>
+        <span fxFlex="auto" ></span>
+        <mat-icon (click)="taskService.signOut()"> exit_to_app</mat-icon>
       </mat-toolbar-row>
     </mat-toolbar>
   </div>

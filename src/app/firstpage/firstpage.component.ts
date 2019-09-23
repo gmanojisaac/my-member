@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MemberloadService, config, Task } from '../memberload.service';
 
 @Component({
   selector: 'app-firstpage',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FirstpageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private taskService: MemberloadService) { }
 
   ngOnInit() {
   }

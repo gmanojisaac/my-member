@@ -1,3 +1,4 @@
+<!--
 <div fxLayout="column" fxLayoutAlign="center"  fxLayoutGap="10%">
 
     <div fxFlex="0 1 30vh"  fxLayoutGap="10%" fxLayoutAlign="center">
@@ -60,4 +61,44 @@
         </mat-card>
     </div>
 </div>
+-->
+
     
+<tr *ngFor="let task of tasks | async; let i = index" >
+    <td>{{i + 1}}</td>
+    <td>{{task?.description}}</td>
+    <td>
+        <button class="btn btn-success" (click)="edit(task)">
+          Edit
+        </button>
+        <button class="btn btn-danger" (click)="deleteTask(task)">
+          Remove
+        </button>
+      </td>
+ </tr>
+
+ <form #f>
+    <div class="form-group">
+    <input [(ngModel)]="myTask" name="myTask" type="text" class="form-control" placeholder="Enter Task" required>
+    </div>
+    <p *ngIf="loading">
+       <i class="fa fa-spinner fa-spin"></i>
+    </p>
+    <div class="form-group">
+     <button class="btn btn-primary"  (click)="saveTask()">
+       Save Task
+     </button>
+    </div>
+  </form>
+  <div *ngIf="taskService.user$ | async as user">
+    <img  [src]="user.photoURL" >
+    <p>URL: {{user.photoURL}}</p>
+    <p>UID: {{ user.uid }}</p>
+  </div>
+  <img #imgelement (load)="onImageLoad()">
+  <canvas  #canvas id="canvas" width="200" height="200" style="border:1px solid #d3d3d3;" >
+        
+</canvas>
+
+
+
