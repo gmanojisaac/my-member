@@ -10,7 +10,7 @@ import { AngularFireStorage } from '@angular/fire/storage';
   selector: '[draw-text]'
 })
 export class ImageDrawTextDirective {
-  
+
   loaded = false;
   @Input() text: string;
   @HostListener('load', ['$event.target'])
@@ -27,7 +27,7 @@ export class ImageDrawTextDirective {
 
     context.drawImage(img, 0, 0);
     img.src = canvas.toDataURL();
-    
+
   }
 }
 
@@ -45,7 +45,7 @@ export class StepperFirstComponent implements OnInit {
   @ViewChild('canvas', { static: true }) canvas;
   imageElement: HTMLImageElement;
   @ViewChild('imgelement', { static: true }) imgelement;
-  
+
   loaded = false;
   constructor(private db: AngularFirestore, private taskService: MemberloadService, public storage: AngularFireStorage) {
 
@@ -64,38 +64,38 @@ export class StepperFirstComponent implements OnInit {
       });
     }));
     this.taskService.user$.subscribe((myuser) => {
-      if(myuser != null){
+      if (myuser != null) {
         this.image = myuser.photoURL;
         this.imageElement.src = myuser.photoURL;
         fetch(myuser.photoURL)
-      .then((response)=> {
-        return response.blob();
-      })
-      .then(blobme=> {
-        console.log(blobme);
-      const date = new Date().valueOf();
-      let text = '';
-      const possibleText = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      for (let i = 0; i < 5; i++) {
-        text += possibleText.charAt(Math.floor(Math.random() * possibleText.length));
-      }
-      // Replace extension according to your media type like this 
-      const imageName = date + '.' + text + '.jpeg';
-      const imageFile = new File([blobme], imageName, { type: 'image/jpeg' });
-      //this.generatedImage =  window.URL.createObjectURL(imageFile);
-      // window.open(this.generatedImage);
-      console.log('imageFile', imageFile);
-      this.storage.upload('filePath_profile', imageFile).then( uploadstat => {
-        if( uploadstat != null){
-          uploadstat.ref.getDownloadURL().then(downloadURL=>{
-            this.taskService.updateUserDataLocation(myuser, downloadURL);
-          });
-        }
-        
-      });
-      });
-      
-      }
+          .then((response) => {
+            return response.blob();
+          })
+          .then(blobme => {
+            console.log(blobme);
+            const date = new Date().valueOf();
+            let text = '';
+            const possibleText = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            for (let i = 0; i < 5; i++) {
+              text += possibleText.charAt(Math.floor(Math.random() * possibleText.length));
+            }
+            // Replace extension according to your media type like this 
+            const imageName = date + '.' + text + '.jpeg';
+            const imageFile = new File([blobme], imageName, { type: 'image/jpeg' });
+            //this.generatedImage =  window.URL.createObjectURL(imageFile);
+            // window.open(this.generatedImage);
+            console.log('imageFile', imageFile);
+            this.storage.upload('filePath_profile', imageFile);
+              /*.then( uploadstat => {
+                if( uploadstat != null){
+                  uploadstat.ref.getDownloadURL().then(downloadURL=>{
+                    //this.taskService.updateUserDataLocation(myuser, downloadURL);
+                  });
+                }
+              });*/
+  });
+
+}
       
 
     });
@@ -136,60 +136,60 @@ export class StepperFirstComponent implements OnInit {
     });*/
 
   }
-  onImageLoad() {
-    if (this.loaded) {
-      return;
-    }
-
-    this.loaded = true;
-    const canvas = document.createElement('canvas');
-    const context = canvas.getContext('2d');
-
-      //canvas.height = img.height;
-      //canvas.width = img.width;
-  
-      
-      
-    
-
+onImageLoad() {
+  if (this.loaded) {
+    return;
   }
 
-  edit(task) {
-    console.log(task);
-    //Set taskToEdit and editMode
-    this.taskToEdit = task;
-    this.editMode = true;
-    //Set form value
-    this.myTask = task.description;
-  } //edit
+  this.loaded = true;
+  const canvas = document.createElement('canvas');
+  const context = canvas.getContext('2d');
 
-  saveTask() {
-    if (this.myTask !== null) {
-      //Get the input value
-      let task = {
-        description: this.myTask
-      };
-      if (!this.editMode) {
-        console.log(task);
-        this.taskService.addTask(task);
-      } else {
-        //Get the task id
-        let taskId = this.taskToEdit.id;
-        //update the task
-        this.taskService.updateTask(taskId, task);
-      }
-      //set edit mode to false and clear form
-      this.editMode = false;
-      this.myTask = '';
+  //canvas.height = img.height;
+  //canvas.width = img.width;
+
+
+
+
+
+}
+
+edit(task) {
+  console.log(task);
+  //Set taskToEdit and editMode
+  this.taskToEdit = task;
+  this.editMode = true;
+  //Set form value
+  this.myTask = task.description;
+} //edit
+
+saveTask() {
+  if (this.myTask !== null) {
+    //Get the input value
+    let task = {
+      description: this.myTask
+    };
+    if (!this.editMode) {
+      console.log(task);
+      this.taskService.addTask(task);
+    } else {
+      //Get the task id
+      let taskId = this.taskToEdit.id;
+      //update the task
+      this.taskService.updateTask(taskId, task);
     }
-  } //saveTask
+    //set edit mode to false and clear form
+    this.editMode = false;
+    this.myTask = '';
+  }
+} //saveTask
 
-  deleteTask(task) {
-    //Get the task id
-    let taskId = task.id;
-    //delete the task
-    this.taskService.deleteTask(taskId);
-  } //deleteTask
+deleteTask(task) {
+  //Get the task id
+  let taskId = task.id;
+  //delete the task
+  this.taskService.deleteTask(taskId);
+} //deleteTask
 
 
 

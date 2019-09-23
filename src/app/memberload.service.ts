@@ -64,7 +64,7 @@ export class MemberloadService {
       const provider = new auth.GoogleAuthProvider();
       const credential = await this.afAuth.auth.signInWithPopup(provider);
       return;
-      //return this.updateUserData(credential.user);
+      return this.updateUserData(credential.user);
     
   }
 
@@ -81,7 +81,7 @@ export class MemberloadService {
 
     }
 
-    return userRef.set(data, { merge: true })
+    //return userRef.set(data, { merge: true })
   }
   private updateUserData(user) {
     // Sets user data to firestore on login
