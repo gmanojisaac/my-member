@@ -63,7 +63,7 @@ export class MemberloadService {
 
       const provider = new auth.GoogleAuthProvider();
       const credential = await this.afAuth.auth.signInWithPopup(provider);
-      return;
+      //return;
       return this.updateUserData(credential.user);
     
   }
