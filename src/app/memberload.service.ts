@@ -9,6 +9,17 @@ import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import * as firebase from 'firebase/app';
+
+export class Item {
+  name: string;
+}
+
+export class GroceryItem {
+  value: string;
+  id: string;
+}
+
 
 export interface User {
   uid: string;
@@ -33,14 +44,21 @@ export class MemberloadService {
   key: string = 'UID';
   keyName: string= 'UserName';
   keyEmail: string= 'UserEmail';
-  keyPhoto: string= 'UserPhoto';
+  keyPhoto: string= '';
 
   user$: Observable<User>;
 
   tasks: AngularFirestoreCollection<Task>;
   private taskDoc: AngularFirestoreDocument<Task>;
-
+  groceryItemsDoc: AngularFirestoreDocument<Item>;
+  groceryItems: Observable<GroceryItem[]>;
   constructor(private db: AngularFirestore, private afAuth: AngularFireAuth, private router: Router) { 
+    this.afAuth.auth.onAuthStateChanged(user => {
+      if (user) {
+        // call method that selects all items when user is authenticated
+        this.selectItems(user.uid);
+      }
+    });
 
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user => {
@@ -59,17 +77,27 @@ export class MemberloadService {
     this.tasks = db.collection<Task>(config.collection_endpoint);
 
   }
-  async googleSignin() {
+
+  getphoto(){
+    return this.keyPhoto;
+  }
+  selectItems(uid: string) {
+    this.groceryItemsDoc = this.db.doc<Item>('user/' + uid);
+    this.groceryItems = this.groceryItemsDoc.collection<GroceryItem>('GroceryItems').valueChanges();
+  }
+  googleSignin() {
 
       const provider = new auth.GoogleAuthProvider();
-      const credential = await this.afAuth.auth.signInWithPopup(provider);
-      //return;
-      return this.updateUserData(credential.user);
-    
+      this.afAuth.auth.signInWithPopup(provider).then(successLogin =>{
+        this.groceryItemsDoc = this.db.doc<Item>('user/' + successLogin.user.uid);
+        this.keyPhoto = successLogin.user.photoURL;
+        this.router.navigate(['/next']);
+      });
+  
   }
 
-  public updateUserDataLocation( updaterec: User, downloadstr: string){
-
+  public updateUserDataLocation( downloadstr, updaterec){
+    
     const userRef: AngularFirestoreDocument<any> = this.db.doc(`users/${updaterec.uid}`);
 
     const data: User = {
@@ -81,11 +109,12 @@ export class MemberloadService {
 
     }
 
-    //return userRef.set(data, { merge: true })
+    return userRef.update(data)
   }
   private updateUserData(user) {
     // Sets user data to firestore on login
     const userRef: AngularFirestoreDocument<User> = this.db.doc(`users/${user.uid}`);
+    //this.tasks = userRef.collection<Task>('tasks').valueChanges();
 
     const data = { 
       uid: user.uid, 
@@ -100,9 +129,9 @@ export class MemberloadService {
   async signOut() {
     await this.afAuth.auth.signOut();
     //clear the local storage
-    this.router.navigate(['/']);
+    this.router.navigate(['/first']);
   }
-
+/*
   addTask(task) {
     //Add the new task to the collection
     this.tasks.add(task);
@@ -118,5 +147,5 @@ export class MemberloadService {
   this.taskDoc = this.db.doc<Task>(`${config.collection_endpoint}/${id}`);
   //Delete the document
   this.taskDoc.delete();
-  } //deleteTask
+  } //deleteTask*/
 }

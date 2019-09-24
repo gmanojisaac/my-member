@@ -14,22 +14,14 @@ export class LoginPageComponent implements OnInit {
   keyPhoto: string= 'UserPhoto';
   showLogin: boolean;
   showName: string;
-  constructor(private router: Router, private taskService: MemberloadService) { }
+  constructor(private taskService: MemberloadService) { }
 
   ngOnInit() {
 
   }
 
   NextPage(){
-    this.taskService.googleSignin().then((someData) =>{
-      if(someData != null){
-        console.log("googlesignin",someData );
-        
-      }
-      this.router.navigate(['/next']);
-     
-    });
-    
+    this.taskService.googleSignin();    
   }
 
 }

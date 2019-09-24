@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppMaterialModule } from './app-material/app-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { StepperDetailsComponent } from './stepper-details/stepper-details.component';
-import { StepperFirstComponent, ImageDrawTextDirective } from './stepper-first/stepper-first.component';
+import { StepperFirstComponent } from './stepper-first/stepper-first.component';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { AngularFireStorageModule } from '@angular/fire/storage';
@@ -24,7 +24,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { SecondPageComponent } from './second-page/second-page.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule }   from '@angular/forms';
-
+import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,8 +37,7 @@ import { FormsModule }   from '@angular/forms';
     AuidoRecPlayComponent,
     VideoRecPlayComponent,
     LoginPageComponent,
-    SecondPageComponent,
-    ImageDrawTextDirective
+    SecondPageComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +52,7 @@ import { FormsModule }   from '@angular/forms';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AngularFireAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
