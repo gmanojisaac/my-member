@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { trigger, transition, animate, style, query, group, state, animateChild } from '@angular/animations';
+import { trigger, transition, animate, style, query, group, state, animateChild, stagger } from '@angular/animations';
 import { Router, RouterOutlet, NavigationStart } from '@angular/router';
 
 @Component({
@@ -19,7 +19,8 @@ import { Router, RouterOutlet, NavigationStart } from '@angular/router';
           })
         ], { optional: true }),
         query(':enter', [
-          style({ left: '-100%'})
+          style({left: '-100%'})
+         
         ], { optional: true }),
         query(':leave ', animateChild(), { optional: true }),
         group([
@@ -27,7 +28,8 @@ import { Router, RouterOutlet, NavigationStart } from '@angular/router';
             animate('200ms ease-out', style({ left: '100%'}))
           ], { optional: true }),
           query(':enter', [
-            animate('300ms ease-out', style({ left: '0%'}))
+
+            animate('3000ms ease-out', style({ left: '0%'}))
           ], { optional: true })
         ]),
         query(':enter', animateChild(), { optional: true }),
