@@ -20,9 +20,10 @@ const routes: Routes = [
     { path: '', redirectTo: '/first', pathMatch: 'full' },
     { path: 'myAV', component: GiftpageComponent, outlet: 'sideAV' },
     { path: 'mycontentDetails', component: StepperDetailsComponent, outlet: 'contentDetails' },
-    { path: 'first', component: LoginPageComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectLoggedInToItems }},
+    { path: 'first', component: LoginPageComponent, canActivate: [AngularFireAuthGuard], 
+    data: { animation:'intro', authGuardPipe: redirectLoggedInToItems }},
     { path: 'next', component: FirstpageComponent, canActivate: [AngularFireAuthGuard],
-     data: { authGuardPipe: redirectUnauthorizedToLogin }},
+     data: { animation:'next', authGuardPipe: redirectUnauthorizedToLogin }},
     { path: 'second', component: SecondPageComponent, canActivate: [AngularFireAuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin }},
     { path: 'other', component: SecondPageComponent }
