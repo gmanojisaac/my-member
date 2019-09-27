@@ -16,7 +16,7 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { FirstpageComponent } from './firstpage/firstpage.component';
-import { PhotopageComponent } from './photopage/photopage.component';
+import { PhotopageComponent, DialogOverviewExampleDialog } from './photopage/photopage.component';
 import { GiftpageComponent } from './giftpage/giftpage.component';
 import { AuidoRecPlayComponent } from './auido-rec-play/auido-rec-play.component';
 import { VideoRecPlayComponent } from './video-rec-play/video-rec-play.component';
@@ -37,7 +37,8 @@ import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
     AuidoRecPlayComponent,
     VideoRecPlayComponent,
     LoginPageComponent,
-    SecondPageComponent
+    SecondPageComponent,
+    DialogOverviewExampleDialog
   ],
   imports: [
     BrowserModule,
@@ -53,6 +54,9 @@ import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
     FormsModule
   ],
   providers: [AngularFireAuthGuard],
+  entryComponents: [
+    DialogOverviewExampleDialog
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

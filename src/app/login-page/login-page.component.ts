@@ -16,7 +16,7 @@ import { transition, trigger, query, style, animate, stagger, AnimationEvent  } 
     trigger('pageAnimations', [
       transition(':enter', [
         query('img', [
-          style({opacity: 0, transform: 'translateY(200%)'}),
+          style({opacity: 0, transform: 'translateY(50%)'}),
           stagger('1000ms', [
             animate('500ms cubic-bezier(0.35, 0, 0.25, 1)', style({ opacity: 1, transform: 'none' }))
           ])
@@ -26,7 +26,7 @@ import { transition, trigger, query, style, animate, stagger, AnimationEvent  } 
         query('img', [
           style({opacity: 1, transform: 'none'}),
           stagger('30ms', [
-            animate('5000ms cubic-bezier(0.35, 0, 0.25, 1)', style({ opacity: 0, transform: 'translateY(200%)' }))
+            animate('5000ms cubic-bezier(0.35, 0, 0.25, 1)', style({ opacity: 0, transform: 'translateY(50%)' }))
           ])
         ], { optional: true })
       ])

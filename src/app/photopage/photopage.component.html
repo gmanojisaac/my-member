@@ -15,9 +15,9 @@
       </mat-card-content>
       <mat-card-actions>
         <button mat-raised-button >Birthday</button>
-        <button mat-raised-button >Jan 28</button>
+        <button mat-raised-button >{{birthdate}}</button>
         <button mat-raised-button >Anniversary</button>
-        <button mat-raised-button >Nov 11</button>
+        <button mat-raised-button >{{anniversary}}</button>
       </mat-card-actions>
     </mat-card>
   </div>
@@ -25,7 +25,7 @@
       <h1>
         Update Details
       </h1>
-      <button mat-raised-button color="primary">
+      <button mat-raised-button color="primary" (click)="openDialog()" >
           Personal Details
       </button>
       <button mat-raised-button color="primary">

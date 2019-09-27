@@ -29,6 +29,17 @@ export interface User {
   myCustomData?: string;
 }
 
+export interface UserDB {
+  AnniversaryDate: string;
+  BirthDate: string;
+  City: string;
+  uid: string;
+  email: string;
+  photoURL: string;
+  displayName: string;
+  myCustomData: string;
+}
+
 export interface Task {
   id: string;
   description: string;
@@ -46,7 +57,8 @@ export class MemberloadService {
   keyEmail: string= 'UserEmail';
   keyPhoto: string= '';
 
-  user$: Observable<User>;
+  //user$: Observable<User>;
+  user$: Observable<UserDB>;
 
   tasks: AngularFirestoreCollection<Task>;
   private taskDoc: AngularFirestoreDocument<Task>;
@@ -65,8 +77,10 @@ export class MemberloadService {
           // Logged in
 
         if (user) {
-
-          return this.db.doc<User>(`users/${user.uid}`).valueChanges();
+          const userRefData: AngularFirestoreDocument<UserDB> = this.db.doc(`users/${user.uid}`);
+          return userRefData.collection<Task>('tasks').valueChanges();
+          //return this.db.doc<User>(`users/${user.uid}`).valueChanges();
+          return this.db.doc<UserDB>(`users/${user.uid}`).valueChanges();
         } else {
           // Logged out if there is no local storage
           
@@ -81,10 +95,12 @@ export class MemberloadService {
   getphoto(){
     return this.keyPhoto;
   }
+
   selectItems(uid: string) {
     this.groceryItemsDoc = this.db.doc<Item>('user/' + uid);
     this.groceryItems = this.groceryItemsDoc.collection<GroceryItem>('GroceryItems').valueChanges();
   }
+
   googleSignin() {
 
       const provider = new auth.GoogleAuthProvider();

@@ -1,5 +1,6 @@
 
-<div fxLayout="column" fxLayoutAlign="center"  fxLayoutGap="10%">
+<!--
+    <div fxLayout="column" fxLayoutAlign="center"  fxLayoutGap="10%">
 
     <div fxFlex="0 1 30vh"  fxLayoutGap="10%" fxLayoutAlign="center">
         <mat-icon fxFlexAlign="center" > fast_rewind </mat-icon>
@@ -62,7 +63,7 @@
     </div>
 </div>
 
-<!--
+
 
 <tr *ngFor="let task of tasks | async; let i = index" >
     <td>{{i + 1}}</td>
@@ -92,14 +93,14 @@
   </form>
 -->
     
-  <!--
+
   <div *ngIf="taskService.user$ | async as user">
     <img  [src]="user.photoURL" >
 
     <p>URL: {{user.photoURL}}</p>
-    <p>UID: {{ user.uid }}</p>
+    <p>UID: {{ user.anniversaryDate }}</p>
   </div>
-  -->
+
 
 
 
