@@ -1,6 +1,5 @@
 import { Component, OnInit, HostBinding  } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { MemberloadService, config, Task } from '../memberload.service';
+import { MemberloadService } from '../memberload.service';
 import { transition, trigger, query, style, animate, stagger, AnimationEvent  } from '@angular/animations';
 
 @Component({
@@ -8,9 +7,10 @@ import { transition, trigger, query, style, animate, stagger, AnimationEvent  } 
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.css'],
   host: {
+    /*
     '[@pageAnimations]': 'someExpression',
     '(@pageAnimations.start)': 'captureStartEvent($event)',
-    '(@pageAnimations.done)': 'captureDoneEvent($event)',
+    '(@pageAnimations.done)': 'captureDoneEvent($event)',*/
   },
   animations: [
     trigger('pageAnimations', [
@@ -35,14 +35,7 @@ import { transition, trigger, query, style, animate, stagger, AnimationEvent  } 
 })
 @HostBinding('@pageAnimations')
 export class LoginPageComponent implements OnInit {
-  key: string = 'UID';
-  keyName: string= 'UserName';
-  keyEmail: string= 'UserEmail';
-  keyPhoto: string= 'UserPhoto';
-  showLogin: boolean;
-  showName: string;
-  someExpression: any = false;
-  captureStartEvent(event: AnimationEvent) {
+  /*captureStartEvent(event: AnimationEvent) {
     console.log("start",event );
     // the toState, fromState and totalTime data is accessible from the event variable
   }
@@ -50,15 +43,11 @@ export class LoginPageComponent implements OnInit {
   captureDoneEvent(event: AnimationEvent) {
     // the toState, fromState and totalTime data is accessible from the event variable
     console.log("End",event );
-  }
-  constructor(private taskService: MemberloadService) { }
+  }*/
+  constructor(public taskService: MemberloadService) { }
 
   ngOnInit() {
 
-  }
-
-  NextPage(){
-    this.taskService.googleSignin();    
   }
 
 }

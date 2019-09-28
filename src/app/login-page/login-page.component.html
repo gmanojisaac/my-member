@@ -1,52 +1,16 @@
-<!--
-  <div fxLayout="row" fxLayoutAlign="center center" class="row-height">
-  -->
-
-
 <div fxLayout="row" fxLayoutAlign="center center" class="logincomp">
     <img fxFlex="35%" src="/assets/man2-first.png"  />
     <mat-card fxFlex="25%"  class="row-height">
-        <mat-card-title>Never Miss your loved ones on their Special Day!</mat-card-title>
-        <mat-card-subtitle></mat-card-subtitle>
+        <mat-card-header>
+            <mat-card-title>Never Miss your loved ones on their Special Day!</mat-card-title>
+            <mat-card-subtitle>
+                <div mat-card-avatar  style= "background-image: url('/assets/man.png'); background-size: contain;"></div>
+            </mat-card-subtitle>
+        </mat-card-header>
+        
         <mat-card-content fxLayout="column">
-            <button mat-raised-button color="primary" (click)= "NextPage()"  > Google Login</button>
+            <button mat-raised-button color="primary" (click)= "taskService.googleSignin()"  > Google Login</button>
         </mat-card-content>          
     </mat-card>
     <img fxFlex="35%" src="/assets/man1-first.png"  />
 </div>
-<!--
-<div class="content">
-    <h1 class="logo">
-        <span class="angular">Angular</span>
-        <span class="animation">Animation</span>
-        <span class="movie">Movie</span>
-    </h1>
-    <img src="/assets/viking.png" class="viking" />
-</div>
--->
-
-
-
-<!-- ChildAnimate Works
-<h2>Filter/Stagger</h2>
-
-<form>
-  <input #criteria (input)="updateCriteria(criteria.value)" placeholder="Search Heroes" />
-  <h1>
-    hello
-  </h1>
-  <h1>
-    hello
-  </h1>
-</form>    
-
-<ul class="heroes">
-  <li *ngFor="let hero of heroes" class="hero">
-    <div class="inner">
-      <span class="badge">{{ hero.id }}</span>
-      <span>{{ hero.name }}</span>
-    </div>
-  </li>
-</ul>
-
--->

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MemberloadService, config, Task } from '../memberload.service';
+import { MemberloadService } from '../memberload.service';
 
 @Component({
   selector: 'app-firstpage',

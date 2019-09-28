@@ -1,3 +1,5 @@
+Photo: {{showphoto}}
+NewOrOld: {{neworold}}
 <div fxLayout="row"  fxLayoutGap="10%">
   <div fxFlex="0 1 45vh" fxLayoutAlign="start center" >
     <mat-card  >
@@ -7,7 +9,7 @@
         <mat-card-subtitle>Trivandrum </mat-card-subtitle>
         <mat-card-subtitle>ph:9539325410</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image style= "max-height: 50vh" src={{taskService?.keyPhoto}} alt="Photo of a User">
+      <img mat-card-image style= "max-height: 50vh" src="{{showphoto}}" alt="Photo of a User">
       <mat-card-content>
         <p>
           A Loving Father

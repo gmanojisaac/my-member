@@ -1,12 +1,13 @@
 import { Component, OnInit , Inject} from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { MemberloadService, config, Task } from '../memberload.service';
+import { MemberloadService} from '../memberload.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 export interface DialogData {
   animal: string;
   name: string;
 }
+
 @Component({
   selector: 'dialog-overview-example-dialog',
   template: `<h1 mat-dialog-title>Hi {{data.name}}</h1>
@@ -39,19 +40,19 @@ export class DialogOverviewExampleDialog {
   styleUrls: ['./photopage.component.css']
 })
 export class PhotopageComponent implements OnInit {
-  animal: string;
   name: string;
-  birthdate: string;
-  anniversary: string;
+  animal : string;
   showphoto: string;
+  neworold= false;
+
   constructor(private router: Router, public taskService: MemberloadService, public dialog: MatDialog) {
-    //this.taskService.groceryItems.subscribe(myitems => {
-      //myitems.
-    //});
    }
 
   ngOnInit() {
-    this.showphoto= this.taskService.getphoto();
+    this.taskService.currentMessageData.subscribe(showDetails => {
+      this.showphoto = showDetails.photoURL;
+      this.neworold =  showDetails.NewOrOldUser;
+    });    
   }
   NextPage(){
     this.router.navigate(['/second']);

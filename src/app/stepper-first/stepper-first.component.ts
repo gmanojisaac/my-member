@@ -1,6 +1,6 @@
 import { Component, Directive, OnInit, ViewChild, HostListener, Input, ElementRef } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { MemberloadService, config, Task } from '../memberload.service';
+import { MemberloadService} from '../memberload.service';
 import { Observable, Observer } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as RecordRTC from 'recordrtc';
@@ -32,17 +32,8 @@ export class StepperFirstComponent implements OnInit {
   }
 
   ngOnInit() {
-    /*
-    this.tasks = this.db.collection(config.collection_endpoint).snapshotChanges().pipe(map((actions) => {
-      return actions.map(a => {
-        //Get document data
-        const data = a.payload.doc.data() as Task;
-        //Get document id
-        const id = a.payload.doc.id;
-        //Use spread operator to add the id to the document data
-        return { id, ...data };
-      });
-    }));*/
+    
+   
   }
 
   savephoto(myuser){
@@ -105,52 +96,12 @@ export class StepperFirstComponent implements OnInit {
   }
 
   getBase64Image(img: HTMLImageElement) {
-    var canvas = document.createElement("canvas");
+    const canvas = document.createElement('canvas');
     canvas.width = img.width;
     canvas.height = img.height;
-    var ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
     ctx.drawImage(img, 0, 0);
-    var dataURL = canvas.toDataURL("image/png");
-    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+    const dataURL = canvas.toDataURL('image/png');
+    return dataURL.replace(/^data:image\/(png|jpg);base64,/, '');
   }
-
-/*  edit(task) {
-
-    //Set taskToEdit and editMode
-    this.taskToEdit = task;
-    this.editMode = true;
-    //Set form value
-    this.myTask = task.description;
-  } //edit
-
-  saveTask() {
-    if (this.myTask !== null) {
-      //Get the input value
-      let task = {
-        description: this.myTask
-      };
-      if (!this.editMode) {
-        //console.log(task);
-        this.taskService.addTask(task);
-      } else {
-        //Get the task id
-        let taskId = this.taskToEdit.id;
-        //update the task
-        this.taskService.updateTask(taskId, task);
-      }
-      //set edit mode to false and clear form
-      this.editMode = false;
-      this.myTask = '';
-    }
-  } //saveTask
-
-  deleteTask(task) {
-    //Get the task id
-    let taskId = task.id;
-    //delete the task
-    this.taskService.deleteTask(taskId);
-  } //deleteTask */
-
-
-
 }
