@@ -8,7 +8,7 @@ import { MemberloadService } from '../memberload.service';
 })
 export class FirstpageComponent implements OnInit {
 
-  constructor(private taskService: MemberloadService) { }
+  constructor(public taskService: MemberloadService) { }
 
   ngOnInit() {
   }
